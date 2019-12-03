@@ -1,0 +1,29 @@
+[{
+    "id": 1,
+    "caller_uri": "sip:a36e0d23777c09f1aabc26bccca48756@service.dec112.at",
+    "start_ts": "2019-12-04T00:01:42.431Z",
+    "end_ts": "2019-12-04T00:38:39.231Z",
+    "end_by": "local",
+    "usage_policy": "",
+    "messages": [
+        {
+            "received_ts": "2019-12-04T00:02:03.182Z",
+            "origin": "remote",
+            "texts": ["Ist da jemand?"],
+            "locations": [
+                {
+                    "lat": 48.227121736854315, 
+                    "lon": 16.346366358920932, 
+                    "alt": 220,
+                    "rad": 3500,
+                    "method": "gps"
+                } 
+            ]
+        },
+        {
+            "received_ts": "2019-12-04T00:02:52.334Z",
+            "origin": "local",
+            "texts": ["ja"]
+        }
+    ]
+}]

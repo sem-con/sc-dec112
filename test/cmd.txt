@@ -1,0 +1,6 @@
+docker run -d -p 4000:3000 --name dec112 semcon/sc-dec112 /bin/init.sh "$(< test/init.trig)"
+
+curl -H "Content-Type: application/json" -d "$(< sample/conversation.json)" -X POST http://localhost:4000/api/data
+curl http://localhost:4000/api/data/plain
+
+curl https://dec112.data-container.net/api/data/plain

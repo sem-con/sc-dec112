@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dec112-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dec112
+  template:
+    metadata:
+      labels:
+        app: dec112
+    spec:
+      containers:
+      - name: dec112
+        image: semcon/sc-dec112
+        command: ["init.sh"]
+        args: ["$(SC_INIT)"]
+        ports:
+        - containerPort: 3000
+        env:
+          - name: LANG
+            value: C.UTF-8
+          - name: RAILS_LOG_TO_STDOUT
+            value: "TRUE"
+          - name: SC_INIT
+            valueFrom:
+              configMapKeyRef:
+                name: dec112-config
+                key: init.trig

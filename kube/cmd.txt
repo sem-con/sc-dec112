@@ -1,0 +1,3 @@
+kubectl delete deployment/dec112-deployment ingress/dec112-ingress service/dec112-service
+kubectl delete configmap dec112-config
+kubectl create configmap dec112-config --from-file=init.trig
