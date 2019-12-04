@@ -1,3 +1,6 @@
 kubectl delete deployment/dec112-deployment ingress/dec112-ingress service/dec112-service
+
+kubectl --record deployment.apps/dec112-deployment set image deployment.v1.apps/dec112-deployment dec112=semcon/sc-dec112:191204
+
 kubectl delete configmap dec112-config
 kubectl create configmap dec112-config --from-file=init.trig

@@ -1,2 +1,2 @@
 o provide usage-policy
-o validate sample
+o validate sample with WOK
