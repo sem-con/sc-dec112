@@ -13,6 +13,7 @@ module Api
                     content << { 
                         "id": record["id"],
                         "caller_uri": record["caller_uri"],
+                        "start_ts": record["start_ts"],
                         "duration": Time.at(record["end_ts"].to_datetime.to_i - record["start_ts"].to_datetime.to_i).utc.strftime("%H:%M:%S"),
                         "message_count": record["messages"].count
                     }

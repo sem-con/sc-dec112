@@ -5,3 +5,6 @@ curl http://localhost:4000/api/data/plain
 
 curl -H "Content-Type: application/json" -d "$(< sample/conversation.json)" -X POST https://dec112.data-container.net/api/data
 curl https://dec112.data-container.net/api/data/plain
+
+curl https://dec112.data-container.net/api/data/conversation
+curl https://dec112.data-container.net/api/data/conversation/2
