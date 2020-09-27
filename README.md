@@ -9,7 +9,7 @@ Special features include:
 
 ### Semantic Container
 
-Semantic Containers enable secure and traceable data exchange between 2 parties.
+Semantic Containers enable secure and traceable data exchange between multiple parties.
 
 more infos and documentation: https://ownyourdata.eu/en/semcon
 Semantic Container images: https://hub.docker.com/u/semcon
