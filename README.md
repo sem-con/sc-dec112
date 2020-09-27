@@ -1,11 +1,11 @@
 # <img src="https://github.com/sem-con/sc-dec112/raw/master/app/assets/images/oyd_blue.png" width="60"> Semantic Container: DEC112    
 
 The DEC112 Semantic Container is a chatbot to be used in the DEC112 system (official website: https://www.dec112.at/en). A ready to use Docker image is available on Dockerhub: https://hub.docker.com/r/semcon/sc-dec112    
-    
+
 Special features include:    
-* chatbot : either Eliza ([Wikipedia](https://en.wikipedia.org/wiki/ELIZA)) or deaf emergency chat training    
-* multi language support: currently text available for English, German, Spanish, French, Romanian    
-* consent management: if a user consents to using chat texts and a DID featuring a service endpoint for hosting consent information (e.g., OwnYourData Data Vault, https://data-vault.eu/en) is available, then this consent information is shared (including requesting information and consent revocation)    
+* **Chatbot**: either Eliza ([Wikipedia](https://en.wikipedia.org/wiki/ELIZA)) or deaf emergency chat training    
+* **Multi language support**: currently text available for English, German, Spanish, French, Romanian    
+* **Consent Management**: if a user consents to using chat texts and a DID featuring a service endpoint for hosting consent information (e.g., OwnYourData Data Vault, https://data-vault.eu/en) is available, then this consent information is shared (including requesting information and consent revocation)    
 
 ### Semantic Container
 
