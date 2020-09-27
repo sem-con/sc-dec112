@@ -1,0 +1,19 @@
+dec-chatbot:
+  image: semcon/sc-dec112
+  environment:
+    RAILS_LOG_TO_STDOUT: "true"
+    LETSENCRYPT_HOST: dec.data-container.net
+    LETSENCRYPT_EMAIL: office@ownyourdata.eu
+    VIRTUAL_HOST: dec.data-container.net
+    VIRTUAL_PORT: 3000
+    SEMCON_DB: "external"
+    WS_ENDPOINT: $WS_ENDPOINT
+  links:
+    - db
+  ports:
+    - "3000:3000"
+  command: ["/bin/init.sh", "${DEC_TRIG}"]
+db:
+  image: postgres:12.1
+  volumes:
+    - dec-chatbot-postgres:/var/lib/postgresql/data

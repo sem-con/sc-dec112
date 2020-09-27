@@ -1,0 +1,3 @@
+export DEC_TRIG=$(<dec112.trig); docker-compose -f docker-compose.yml up -d
+
+export DEC_TRIG=$(<init.trig); docker-compose -f docker-compose_db.yml up -d

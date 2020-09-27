@@ -1,0 +1,12 @@
+--- # pjchat config
+domain: "sip-proxy.at.esinet.io"
+user: "pinger"
+passwd: "P!ng3r."
+proxy: "sip:sip-proxy.at.esinet.io;transport=tcp"
+device: "26f61cc8c42039a5333268e2d5e7d6335d0021bf"
+lon: "16.363449"
+lat: "48.210033"
+rad: "10"
+ref: "http://dec-service.at.esinet.io/api/v1/devices/check/${device_id}?api_key=${api_key}"
+api: "DEC2017#dev"
+debug: "3"

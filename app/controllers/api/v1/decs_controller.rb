@@ -10,11 +10,12 @@ module Api
                 content = []
                 Store.pluck(:item).each do |item|
                     record = JSON(item)
+                    duration = Time.at(record["end_ts"].to_datetime.to_i - record["created_ts"].to_datetime.to_i).utc.strftime("%H:%M:%S") rescue ""
                     content << { 
-                        "id": record["id"],
+                        "call_id": record["call_id"],
                         "caller_uri": record["caller_uri"],
-                        "start_ts": record["start_ts"],
-                        "duration": Time.at(record["end_ts"].to_datetime.to_i - record["start_ts"].to_datetime.to_i).utc.strftime("%H:%M:%S"),
+                        "created_ts": record["created_ts"],
+                        "duration": duration,
                         "message_count": record["messages"].count
                     }
                 end 
@@ -27,7 +28,7 @@ module Api
                 content = []
                 Store.pluck(:item).each do |item|
                     record = JSON(item)
-                    if record["id"].to_s == params[:id]
+                    if record["call_id"].to_s == params[:id]
                         content = record
                     end
                 end                 

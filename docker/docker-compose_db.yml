@@ -1,0 +1,13 @@
+covid-chat:
+  image: semcon/sc-coronabot:latest
+  environment:
+    RAILS_LOG_TO_STDOUT: "true"
+    WS_ENDPOINT: "wss://service.dec112.at:8080/api/v1?api_key=COVID19%23dev"
+    SEMCON_DB: "external"
+  links:
+    - db
+  command: ["/bin/init.sh", "${DEC_TRIG}"]
+db:
+  image: postgres:12.1
+  volumes:
+    - sc-postgres_covid_chat:/var/lib/postgresql/data

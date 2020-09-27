@@ -1,4 +1,8 @@
 docker run -d -p 4000:3000 --name dec112 semcon/sc-dec112 /bin/init.sh "$(< test/init.trig)"
+docker run -d -p 4000:3000 --name coronabot semcon/sc-coronabot script/init_corona.sh "$(< test/init.trig)"
+
+docker run -d --name coronabot -e WS_ENDPOINT=ws://81.16.157.112:8000/api/v1?api_key=COVID19%23dev --hostname chatbot semcon/sc-coronabot:latest script/init_corona.sh "$(< /home/ubuntu/coronabot/init.trig)"
+docker run -d --name mario -e WS_ENDPOINT=wss://service.dec112.at:8080/api/v1?api_key=COVID19%23dev semcon/sc-coronabot:latest script/init_corona.sh "$(< /home/ubuntu/coronabot/init.trig)"
 
 curl -H "Content-Type: application/json" -d "$(< sample/conversation.json)" -X POST http://localhost:4000/api/data
 curl http://localhost:4000/api/data/plain
@@ -6,5 +10,13 @@ curl http://localhost:4000/api/data/plain
 curl -H "Content-Type: application/json" -d "$(< sample/conversation.json)" -X POST https://dec112.data-container.net/api/data
 curl https://dec112.data-container.net/api/data/plain
 
+curl -H "Content-Type: application/json" -d "$(< sample/conversation.json)" -X POST https://dec.data-container.net/api/data
+curl https://dec.data-container.net/api/data/plain
+
 curl https://dec112.data-container.net/api/data/conversation
 curl https://dec112.data-container.net/api/data/conversation/2
+
+
+
+connect PJCHAT to chatbot on TestSystem ()
+docker rm -f pjchat; docker run --name pjchat -i -v /Users/christoph/semcon/projects/DEC/sc-dec112/test/:/home/cfg pjc-image:latest pjchat -r sip:555@sip-proxy.dk.esinet.io -f /home/cfg/config.yaml -c AT

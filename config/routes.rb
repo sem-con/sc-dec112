@@ -22,15 +22,29 @@ Rails.application.routes.draw do
 			match 'data/plain',     to: 'stores#plain',           via: 'get'
 			match 'data/full',      to: 'stores#full',            via: 'get'
 			match 'data/provision', to: 'stores#provision',       via: 'get'
+			match 'data/:id',       to: 'stores#show',            via: 'get'
 			match 'data',           to: 'stores#write',           via: 'post'
 			match 'info',           to: 'infos#index',            via: 'get'
 			match 'log',            to: 'logs#index',             via: 'get'
+
+			match 'receipts',           to: 'receipts#index',         via: 'get'
+			match 'receipt/:id',        to: 'receipts#show',          via: 'get'
+			match 'receipt/:ttl/:id',   to: 'receipts#show',          via: 'get'
+			match 'receipt/:id/revoke', to: 'receipts#revoke',        via: 'delete' 
+			match 'rcpt/:id',           to: 'receipts#show',          via: 'get', defaults: { short: "TRUE" }
+			match 'rcpt/:ttl/:id',      to: 'receipts#show',          via: 'get', defaults: { short: "TRUE" }
+			match 'receipt/:id',        to: 'receipts#create',        via: 'post'
+			match 'receipt',            to: 'receipts#create',        via: 'post'
+
 			match 'buy',            to: 'payments#buy',           via: 'post'
 			match 'paid',           to: 'payments#paid',          via: 'get'
 			match 'payments',       to: 'payments#payments',      via: 'get'
 
-			match 'data/conversation',     to: 'decs#index',      via: 'get'
-			match 'data/conversation/:id', to: 'decs#show',       via: 'get'
+			match 'data/conversation',     to: 'decs#index',         via: 'get'
+			match 'data/conversation/:id', to: 'decs#show',          via: 'get', constraints: {id: /[^\/]+/}
+			match 'chatbot/welcome',       to: 'chatbots#welcome',   via: 'post'
+			match 'chatbot/reply',         to: 'chatbots#reply',     via: 'post'
+			match 'chatbot/call_type',     to: 'chatbots#call_type', via: 'post'
 		end
 	end
 	match '/oauth/applications'     => 'application#create_application',  via: 'post'

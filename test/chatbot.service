@@ -1,0 +1,23 @@
+[Unit]
+Description=DEC112 Chatbot
+After=docker.service network-online.target
+Requires=docker.service
+After=postgresql.service
+
+[Service]
+Restart=always
+TimeoutStartSec=5
+#One ExecStart/ExecStop line to prevent hitting bugs in certain systemd versions
+ExecStart=/bin/sh -c 'docker rm -f chatbot; \
+          docker run -d --name chatbot \
+                 --network esinet \
+                 --ip 172.18.0.7 \
+				 -p 4000:3000 \
+				 -e WS_ENDPOINT=ws://172.28.7.112:8000/api/v1?api_key=OYD2019%23dev \
+                 --hostname chatbot \
+                 semcon/sc-dec112 /bin/init.sh "$(< /srv/chatbot/init.trig)"'
+
+ExecStop=/usr/bin/docker stop chatbot
+
+[Install]
+WantedBy=multi-user.target
